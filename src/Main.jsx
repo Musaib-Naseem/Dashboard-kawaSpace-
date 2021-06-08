@@ -45,6 +45,8 @@ function Main() {
 
     const [allDataEmail,setAllDataEmail]=useState("box_data_items_email");
 
+    const [dotColor,setdotColor]=useState("dot");
+
     
 
     const url = "https://randomuser.me/api/?inc=gender,name,nat,location,picture,email&results=20";
@@ -76,6 +78,12 @@ function Main() {
         setOffset(finalResult.results[0].location.timezone.offset);
         setDescription(finalResult.results[0].location.timezone.description);
         setGen(finalResult.results[0].gender);
+
+        document.getElementById(0).style.backgroundColor="#A259FF";
+        document.getElementById(`${0}+gen`).style.color="#fff";
+        document.getElementById(`${0}+head`).style.color="#fff";
+        document.getElementById(`${0}+email`).style.color="#fff";
+        document.getElementById(`${0}+dot`).style.backgroundColor="#fff";
        
         
       
@@ -106,6 +114,7 @@ function Main() {
             document.getElementById(`${i}+gen`).style.color="#787878";
              document.getElementById(`${i}+head`).style.color="#000";
              document.getElementById(`${i}+email`).style.color="#E16259";
+             document.getElementById(`${i}+dot`).style.backgroundColor="#787878";
              }
      
          }
@@ -113,6 +122,7 @@ function Main() {
         document.getElementById(`${key}+gen`).style.color="#fff";
         document.getElementById(`${key}+head`).style.color="#fff";
         document.getElementById(`${key}+email`).style.color="#fff";
+        document.getElementById(`${key}+dot`).style.backgroundColor="#fff";
 
        
     }
@@ -183,7 +193,7 @@ function Main() {
         
         <div id={key} className="box_data_items" onClick={()=>handleClick(key)} style={{ backgroundColor:"#fff"}} >
 
-        <p id={`${key}+gen`}className={allDataGen}>{data.gender} <span class="dot"></span> NL </p>
+        <p id={`${key}+gen`}className={allDataGen}>{data.gender} <span id={`${key}+dot`} class={dotColor}></span> NL </p>
         <h1 id={`${key}+head`} className={allDataHeading}>{`${data.name.title} ${data.name.first} ${data.name.last} `}</h1>
         <p id={`${key}+email`}  className={allDataEmail}>{data.email}</p>
         
